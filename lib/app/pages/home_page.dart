@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:simple_app/app/pages/dashboard_page.dart';
 import 'package:simple_app/app/pages/form_question_page.dart';
 import 'package:simple_app/app/pages/profile_page.dart';
@@ -27,6 +28,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Color _getIconColor(int index) {
+    return currentPage == index ? Theme.of(context).primaryColor : Colors.grey;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +42,34 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Início'),
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.edit_square), label: 'Criar'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
+              icon: SvgPicture.asset(
+                'images/home.svg',
+                width: 24,
+                height: 24,
+                colorFilter:
+                    ColorFilter.mode(_getIconColor(0), BlendMode.srcIn),
+              ),
+              label: 'Início'),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'images/edit.svg',
+                width: 24,
+                height: 24,
+                colorFilter:
+                    ColorFilter.mode(_getIconColor(1), BlendMode.srcIn),
+              ),
+              label: 'Criar'),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'images/profile-circle.svg',
+                width: 24,
+                height: 24,
+                colorFilter:
+                    ColorFilter.mode(_getIconColor(2), BlendMode.srcIn),
+              ),
+              label: 'Perfil'),
         ],
         onTap: (page) {
           pc.animateToPage(page,

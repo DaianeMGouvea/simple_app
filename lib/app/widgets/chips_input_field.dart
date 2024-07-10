@@ -33,14 +33,15 @@ class _ChipInputWidgetState extends State<ChipInputWidget> {
           onSubmitted: (value) => _addChip(),
         ),
         Container(
+          height: 46,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
+            border: Border.all(color: Color(0xFFB6BBC0)),
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
             child: Wrap(
-              spacing: 8.0,
+              spacing: 42.0,
               children: _chips.map((chip) {
                 return GestureDetector(
                   onTap: () {
@@ -49,13 +50,17 @@ class _ChipInputWidgetState extends State<ChipInputWidget> {
                     });
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    height: 32,
+                    width: 122,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFD72AD),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           chip,
